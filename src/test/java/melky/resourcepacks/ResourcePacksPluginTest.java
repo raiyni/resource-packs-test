@@ -31,7 +31,6 @@ public class ResourcePacksPluginTest
 
         @Override
         protected void failed(Throwable e, Description description) {
-            
             if (e != null) {
                 builder.append(e.getMessage());
             }
@@ -41,7 +40,6 @@ public class ResourcePacksPluginTest
         protected void succeeded(Description description) {
         }
     };
-
 
 	public static void main(String[] args) throws Exception
 	{
