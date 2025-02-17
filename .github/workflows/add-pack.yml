@@ -63,8 +63,9 @@ jobs:
 
       - name: Read package.json
         id: check-files
-        run: |
-          echo "contents=$(cat out.txt)" >> $GITHUB_OUTPUT
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./out.txt
 
   after:
     runs-on: ubuntu-latest
