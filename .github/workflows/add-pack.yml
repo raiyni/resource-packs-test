@@ -63,7 +63,7 @@ jobs:
 
       - name: Read package.json
         id: check-files
-        uses: juliangruber/read-file-action@v1
+        uses: andstor/file-reader-action@v1
         with:
           path: ./out.txt
 
@@ -73,4 +73,4 @@ jobs:
     steps:
       - name: Check file
         run: |
-          echo ${{ steps.build.outputs.errors }}
+          echo ${{ needs.build.outputs.errors }}
