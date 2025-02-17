@@ -20,7 +20,7 @@ on:
         required: true
         default: ''
 
-run-name: ${{ inputs.pr }}-@${{ inputs.sha }}
+run-name: ${{ inputs.pr }}-${{ inputs.sha }}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -51,13 +51,12 @@ jobs:
       - name: Extract latest vanilla sprites
         run: unzip -jq *-sprites.zip -d sprites/
 
-      - uses: actions/setup-java@v2
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
         with:
           java-version: 11
           distribution: temurin
-          cache: gradle
+
       - name: Run unneccessary file check on the pack
         run: |
-          set -e -x
-          chmod +x gradlew
           ./gradlew test -DspriteFolder="sprites" -DpackFolder="pack" --tests "melky.resourcepacks.ResourcePacksPluginTest.checkUnneededFiles" --info --rerun-tasks
