@@ -33,14 +33,31 @@ jobs:
       - name: Checkout master
         uses: actions/checkout@v4
         with:
-           ref: main
+          ref: master
 
       - name: Checkout pack
         uses: actions/checkout@v4
         with:
-           ref: ${{ inputs.sha }}
-           path: pack
+          ref: ${{ inputs.sha }}
+          path: pack
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: ls pack
+      - name: Download the latest vanilla sprites
+        uses: dsaltares/fetch-gh-release-asset@1.1.0
+        with:
+          repo: 'melkypie/sprite-exporter'
+          file: '.*-sprites\.zip'
+          regex: true
+          target: "./"
+      - name: Extract latest vanilla sprites
+        run: unzip -jq *-sprites.zip -d sprites/
+
+      - uses: actions/setup-java@v2
+        with:
+          java-version: 11
+          distribution: temurin
+          cache: gradle
+      - name: Run unneccessary file check on the pack
+        run: |
+          set -e -x
+          chmod +x gradlew
+          ./gradlew test -DspriteFolder="sprites" -DpackFolder="pack" --tests "melky.resourcepacks.ResourcePacksPluginTest.checkUnneededFiles" --info --rerun-tasks
