@@ -50,11 +50,14 @@ jobs:
       - name: Extract latest vanilla sprites
         run: unzip -jq *-sprites.zip -d sprites/
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
+      - name: Setup Java
+        uses: actions/setup-java@v4
         with:
           java-version: 11
           distribution: temurin
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
 
       - name: Run unneccessary file check on the pack
         run: |
