@@ -16,6 +16,7 @@ import org.junit.AfterClass;
 import org.junit.Rule;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
+import java.io.PrintWriter;
 
 @Slf4j
 public class ResourcePacksPluginTest
