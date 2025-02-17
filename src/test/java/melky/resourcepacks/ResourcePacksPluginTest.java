@@ -29,7 +29,7 @@ public class ResourcePacksPluginTest
     public static void afterClass() throws IOException {
 		String basePath = System.getProperty("user.dir");
 
-		log.info("logging from {}", basePath);
+		log.info("logging {}", builder.toString());
 
         PrintWriter logFile = new PrintWriter(basePath + '/' + "out.txt", "UTF-8");
         logFile.write(builder.toString());
