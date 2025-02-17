@@ -64,7 +64,7 @@ jobs:
       - name: Read package.json
         id: check-files
         run: |
-          echo "contents=${cat out.txt}" >> $GITHUB_OUTPUT
+          echo "contents=$(cat out.txt)" >> $GITHUB_OUTPUT
 
   after:
     runs-on: ubuntu-latest
