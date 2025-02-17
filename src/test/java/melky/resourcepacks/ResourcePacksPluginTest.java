@@ -96,9 +96,13 @@ public class ResourcePacksPluginTest
 		List<String> errorMessages = loopDirectory(packFolderFile.listFiles(), packFolderFile.getName(), spriteFolder, false);
 		for (String error : errorMessages)
 		{
-			log.info(error);
+			log.error(error);
 		}
-		assert errorMessages.size() == 0;
+
+		if (errorMessages.size() > 0)
+		{
+			throw new IllegalArgumentException(String.join("\n", errorMessages));
+		}
 	}
 
 	private File createOrRetrieve(final String target) throws IOException
