@@ -73,4 +73,4 @@ jobs:
     steps:
       - name: Check file
         run: |
-          echo {{ outputs.build.check-files}}
+          echo ${{ outputs.build.check-files }}
