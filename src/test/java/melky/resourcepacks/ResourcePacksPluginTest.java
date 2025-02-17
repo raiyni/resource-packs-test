@@ -19,9 +19,14 @@ public class ResourcePacksPluginTest
 	private static final int EOF = -1;
 
 	private static StringBuilder builder = new StringBuilder();
+
     @AfterClass
     public static void afterClass() throws IOException {
-        PrintWriter logFile = new PrintWriter("out.txt", "UTF-8");
+		String basePath = System.getProperty("user.dir");
+
+		log.info("logging from {}", basePath);
+
+        PrintWriter logFile = new PrintWriter(basePath + '/' + "out.txt", "UTF-8");
         logFile.write(builder.toString());
         logFile.close();
     }
