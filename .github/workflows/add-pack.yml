@@ -63,9 +63,8 @@ jobs:
 
       - name: Read package.json
         id: check-files
-        uses: andstor/file-reader-action@v1
-        with:
-          path: ./out.txt
+        run: |
+          echo "contents=$(cat ./out.txt)" >> "$GITHUB_OUTPUT"
 
   after:
     runs-on: ubuntu-latest
