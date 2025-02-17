@@ -26,7 +26,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      errors: ${{ steps.build.check-files }}
+      errors: ${{ steps.build.output.contents }}
     steps:  
       - name: Checkout master
         uses: actions/checkout@v4
@@ -73,4 +73,4 @@ jobs:
     steps:
       - name: Check file
         run: |
-          echo ${{ steps.build.outputs.check-files }}
+          echo ${{ steps.build.outputs.errors }}
