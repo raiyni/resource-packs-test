@@ -57,11 +57,26 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
 
       - name: Run unneccessary file check on the pack
+        continue-on-error: true
         run: |
           ./gradlew test -DspriteFolder="sprites" -DpackFolder="pack" --tests "melky.resourcepacks.ResourcePacksPluginTest.checkUnneededFiles" --info --rerun-tasks
 
-      - uses: actions/upload-artifact@v4
-        if: always()
+      - name: Read package.json
+        id: check-files
+        run: |
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "contents<<$EOF" >> $GITHUB_OUTPUT
+          echo "$(cat ./out.txt)" >> $GITHUB_OUTPUT
+          echo "$EOF" >> $GITHUB_OUTPUT
+
+  after:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@v3
         with:
-          name: errors
-          path: out.txt
+          message: |
+            ${{ needs.build.outputs.errors }}
+          pr-number: ${{ inputs.pr }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
