@@ -27,7 +27,6 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       errors: ${{ steps.build.check-files }}
-
     steps:  
       - name: Checkout master
         uses: actions/checkout@v4
@@ -54,10 +53,13 @@ jobs:
           java-version: 11
           distribution: temurin
 
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
       - name: Run unneccessary file check on the pack
         continue-on-error: true
         run: |
-          ./gradlew test -DspriteFolder="sprites" -DpackFolder="pack" -D--tests "melky.resourcepacks.ResourcePacksPluginTest.checkUnneededFiles" --info --rerun-tasks
+          ./gradlew test -DspriteFolder="sprites" -DpackFolder="pack" --tests "melky.resourcepacks.ResourcePacksPluginTest.checkUnneededFiles" --rerun-tasks
 
       - name: Read package.json
         id: check-files
@@ -71,4 +73,4 @@ jobs:
     steps:
       - name: Check file
         run: |
-          echo {{ outputs.build.check-files }}
+          echo {{ outputs.build.check-files}}

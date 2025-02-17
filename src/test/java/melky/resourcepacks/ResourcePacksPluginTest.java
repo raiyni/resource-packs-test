@@ -12,6 +12,8 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.RuneLite;
 import net.runelite.client.externalplugins.ExternalPluginManager;
 import org.junit.Test;
+import org.junit.AfterClass;
+import org.junit.Rule;
 
 @Slf4j
 public class ResourcePacksPluginTest
