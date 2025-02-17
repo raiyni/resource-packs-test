@@ -59,7 +59,7 @@ jobs:
       - name: Run unneccessary file check on the pack
         continue-on-error: true
         run: |
-          ./gradlew test -DspriteFolder="sprites" -DpackFolder="pack" --tests "melky.resourcepacks.ResourcePacksPluginTest.checkUnneededFiles" --rerun-tasks
+          ./gradlew test -DspriteFolder="sprites" -DpackFolder="pack" --tests "melky.resourcepacks.ResourcePacksPluginTest.checkUnneededFiles" --info --rerun-tasks
 
       - name: Read package.json
         id: check-files
