@@ -26,7 +26,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      errors: ${{ steps.build.output.contents }}
+      errors: ${{ steps.build.check-files.contents }}
     steps:  
       - name: Checkout master
         uses: actions/checkout@v4
@@ -63,9 +63,8 @@ jobs:
 
       - name: Read package.json
         id: check-files
-        uses: juliangruber/read-file-action@v1
-        with:
-          path: ./out.txt
+        run: |
+          echo "contents=${cat out.txt}" >> $GITHUB_OUTPUT
 
   after:
     runs-on: ubuntu-latest
