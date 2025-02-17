@@ -64,7 +64,10 @@ jobs:
       - name: Read package.json
         id: check-files
         run: |
-          echo "contents=$(cat ./out.txt)" >> "$GITHUB_OUTPUT"
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "contents<<$EOF" >> $GITHUB_OUTPUT
+          echo cat ./out.txt >> $GITHUB_OUTPUT
+          echo "$EOF" >> $GITHUB_OUTPUT
 
   after:
     runs-on: ubuntu-latest
