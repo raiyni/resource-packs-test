@@ -26,7 +26,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      errors: 
+      errors: ${{ steps.build.check-files }}
+
     steps:  
       - name: Checkout master
         uses: actions/checkout@v4
@@ -52,9 +53,6 @@ jobs:
         with:
           java-version: 11
           distribution: temurin
-
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
 
       - name: Run unneccessary file check on the pack
         continue-on-error: true
