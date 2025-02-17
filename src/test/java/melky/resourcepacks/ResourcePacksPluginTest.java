@@ -14,6 +14,7 @@ import net.runelite.client.externalplugins.ExternalPluginManager;
 import org.junit.Test;
 import org.junit.AfterClass;
 import org.junit.Rule;
+import org.junit.rules.TestWatcher;
 
 @Slf4j
 public class ResourcePacksPluginTest
