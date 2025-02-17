@@ -64,8 +64,7 @@ jobs:
         id: check-files
         if: always()
         run: |
-          EOF=[ERRORS]
-          echo "$EOF"
+          echo "[ERRORS]"
           echo "$(cat ./out.txt)"
-          echo "$EOF"
+          echo "[/ERRORS]"
 
