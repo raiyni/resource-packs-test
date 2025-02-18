@@ -45,7 +45,7 @@ public class ResourcePacksPluginTest
         @Override
         protected void failed(Throwable e, Description description) {
             if (e != null) {
-                builder.append(e.getMessage())
+                builder.append(e.getMessage());
 				builder.append("\n");
             }
         }
