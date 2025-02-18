@@ -163,7 +163,7 @@ public class ResourcePacksPluginTest
 
 		if (Strings.isNullOrEmpty(properties.getProperty("displayName")))
 		{
-			errorMessages.add("Pack does not contain a nadisplayNameme property");
+			errorMessages.add("Pack does not contain a displayName property");
 		}
 
 		if (Strings.isNullOrEmpty(properties.containsKey("author")))
