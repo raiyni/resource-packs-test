@@ -58,7 +58,7 @@ jobs:
 
       - name: Check pack for errors
         run: |
-          ./gradlew test -DspriteFolder="sprites" -DpackFolder="pack" --tests "melky.resourcepacks.ResourcePacksPluginTest.checkUnneededFiles" --rerun-tasks
+          ./gradlew test -DspriteFolder="sprites" -DpackFolder="pack" --tests "melky.resourcepacks.ResourcePacksPluginTest" --rerun-tasks
 
       - name: Read errors
         id: check-files

@@ -18,6 +18,8 @@ import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 import java.io.PrintWriter;
 
+
+
 @Slf4j
 public class ResourcePacksPluginTest
 {
@@ -66,7 +68,6 @@ public class ResourcePacksPluginTest
 	 *
 	 * @throws IOException
 	 */
-	@Test
 	public void moveImages() throws IOException
 	{
 		String spriteFolder = System.getProperty("spriteFolder");
@@ -132,6 +133,52 @@ public class ResourcePacksPluginTest
 			log.error(error);
 		}
 
+		if (errorMessages.size() > 0)
+		{
+			throw new IllegalArgumentException(String.join("\n", errorMessages));
+		}
+	}
+
+	@Test
+	public void checkPackProperties() throws IOException
+	{
+		String packFolder = System.getProperty("packFolder");
+		if (Strings.isNullOrEmpty(packFolder))
+		{
+			throw new RuntimeException("spriteFolder and packFolder need to be defined");
+		}
+
+		File propertiesFile = new File(packFolder, "/pack.properties");
+		if  (!propertiesFile.exists())
+		{
+			throw new IllegalArgumentException("Pack does not contain a pack.properties file");
+		}
+
+		Properties properties = new Properties();
+		properties.load(new FileInputStream(propertiesFile));
+
+		List<String> errorMessages = new ArrayList<>();
+
+		if (!properties.containsKey("displayName"))
+		{
+			errorMessages.add("Pack does not contain a nadisplayNameme property");
+		}
+
+		if (!properties.containsKey("author"))
+		{
+			errorMessages.add("Pack does not contain a author property");
+		}
+
+		if (!properties.containsKey("tags"))
+		{
+			errorMessages.add("Pack does not contain a tags property");
+		}
+
+		for (String error : errorMessages)
+		{
+			log.error(error);
+		}
+		
 		if (errorMessages.size() > 0)
 		{
 			throw new IllegalArgumentException(String.join("\n", errorMessages));
