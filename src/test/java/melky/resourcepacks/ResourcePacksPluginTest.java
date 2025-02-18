@@ -163,17 +163,17 @@ public class ResourcePacksPluginTest
 
 		if (Strings.isNullOrEmpty(properties.getProperty("displayName")))
 		{
-			errorMessages.add("Pack does not contain a displayName property");
+			errorMessages.add("pack.properties does not contain a displayName property");
 		}
 
 		if (Strings.isNullOrEmpty(properties.containsKey("author")))
 		{
-			errorMessages.add("Pack does not contain a author property");
+			errorMessages.add("pack.properties does not contain a author property");
 		}
 
 		if (!properties.containsKey("tags"))
 		{
-			errorMessages.add("Pack does not contain a tags property");
+			errorMessages.add("pack.properties does not contain a tags property");
 		}
 
 		for (String error : errorMessages)
