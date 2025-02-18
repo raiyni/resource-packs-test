@@ -56,11 +56,11 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
 
-      - name: Run unneccessary file check on the pack
+      - name: Check pack for errors
         run: |
           ./gradlew test -DspriteFolder="sprites" -DpackFolder="pack" --tests "melky.resourcepacks.ResourcePacksPluginTest.checkUnneededFiles" --rerun-tasks
 
-      - name: Read package.json
+      - name: Read errors
         id: check-files
         if: always()
         run: |
