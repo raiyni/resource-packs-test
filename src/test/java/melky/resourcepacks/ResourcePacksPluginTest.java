@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.RuneLite;
 import net.runelite.client.externalplugins.ExternalPluginManager;
@@ -133,7 +134,7 @@ public class ResourcePacksPluginTest
 			log.error(error);
 		}
 
-		if (errorMessages.size() > 0)
+		if (!errorMessages.isEmpty())
 		{
 			throw new IllegalArgumentException(String.join("\n", errorMessages));
 		}
@@ -179,7 +180,7 @@ public class ResourcePacksPluginTest
 			log.error(error);
 		}
 		
-		if (errorMessages.size() > 0)
+		if (!errorMessages.isEmpty())
 		{
 			throw new IllegalArgumentException(String.join("\n", errorMessages));
 		}
