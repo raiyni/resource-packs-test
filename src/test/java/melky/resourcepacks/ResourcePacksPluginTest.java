@@ -166,7 +166,7 @@ public class ResourcePacksPluginTest
 			errorMessages.add("pack.properties does not contain a displayName property");
 		}
 
-		if (Strings.isNullOrEmpty(properties.containsKey("author")))
+		if (Strings.isNullOrEmpty(properties.getProperty("author")))
 		{
 			errorMessages.add("pack.properties does not contain a author property");
 		}
