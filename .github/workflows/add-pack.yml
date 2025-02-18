@@ -64,7 +64,5 @@ jobs:
         id: check-files
         if: always()
         run: |
-          echo "[ERRORS]"
-          echo "$(cat ./out.txt)"
-          echo "[/ERRORS]"
+          ./check.sh
 
