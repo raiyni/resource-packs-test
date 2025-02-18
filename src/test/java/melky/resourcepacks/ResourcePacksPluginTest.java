@@ -161,12 +161,12 @@ public class ResourcePacksPluginTest
 
 		List<String> errorMessages = new ArrayList<>();
 
-		if (!properties.containsKey("displayName"))
+		if (Strings.isNullOrEmpty(properties.getProperty("displayName")))
 		{
 			errorMessages.add("Pack does not contain a nadisplayNameme property");
 		}
 
-		if (!properties.containsKey("author"))
+		if (Strings.isNullOrEmpty(properties.containsKey("author")))
 		{
 			errorMessages.add("Pack does not contain a author property");
 		}
