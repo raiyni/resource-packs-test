@@ -147,6 +147,7 @@ public class ResourcePacksPluginTest
 		String packFolder = System.getProperty("packFolder");
 		if (Strings.isNullOrEmpty(packFolder))
 		{
+			// hmm
 			throw new RuntimeException("spriteFolder and packFolder need to be defined");
 		}
 
