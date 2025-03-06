@@ -38,3 +38,5 @@ See the plugin's [wiki](https://github.com/melkypie/resource-packs/wiki) for add
 ## Change log
 
 All changes have been moved to [CHANGELOG.md](CHANGELOG.md)
+
+bump
